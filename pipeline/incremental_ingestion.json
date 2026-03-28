@@ -156,7 +156,7 @@
 							{
 								"name": "cdc",
 								"value": {
-									"value": "@activity('max_cdc').output.resultSets[0].row[0].cdc",
+									"value": "@activity('max_cdc').output.resultSets[0].rows[0].cdc",
 									"type": "Expression"
 								}
 							}
@@ -232,7 +232,7 @@
 						{
 							"type": "Query",
 							"text": {
-								"value": "@concat(\n'SELECT MAX(', pipeline().parameters.cdc_col, ') AS cdc FROM ',\npipeline().parameters.schema, '.', pipeline().parameters.table\n)",
+								"value": "select Max(@{pipeline().parameters.cdc_col}) as cdc  from @{pipeline().parameters.schema}.@{pipeline().parameters.table}",
 								"type": "Expression"
 							}
 						}
